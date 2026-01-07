@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dima - Web Developer & Photo Editor</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #3d3d00 100%);
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(90deg, rgba(255, 215, 0, 0.03) 1px, transparent 1px),
+                linear-gradient(rgba(255, 215, 0, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            position: relative;
+        }
+
+        .glitch {
+            font-size: 4rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            position: relative;
+            text-shadow: 0.05em 0 0 rgba(255, 215, 0, 0.75),
+                        -0.025em -0.05em 0 rgba(255, 180, 0, 0.75),
+                        0.025em 0.05em 0 rgba(255, 255, 0, 0.75);
+            animation: glitch 500ms infinite;
+        }
+
+        @keyframes glitch {
+            0% {
+                text-shadow: 0.05em 0 0 rgba(255, 215, 0, 0.75),
+                            -0.025em -0.05em 0 rgba(255, 180, 0, 0.75),
+                            0.025em 0.05em 0 rgba(255, 255, 0, 0.75);
+            }
+            14% {
+                text-shadow: 0.05em 0 0 rgba(255, 215, 0, 0.75),
+                            -0.025em -0.05em 0 rgba(255, 180, 0, 0.75),
+                            0.025em 0.05em 0 rgba(255, 255, 0, 0.75);
+            }
+            15% {
+                text-shadow: -0.05em -0.025em 0 rgba(255, 215, 0, 0.75),
+                            0.025em 0.025em 0 rgba(255, 180, 0, 0.75),
+                            -0.05em -0.05em 0 rgba(255, 255, 0, 0.75);
+            }
+            49% {
+                text-shadow: -0.05em -0.025em 0 rgba(255, 215, 0, 0.75),
+                            0.025em 0.025em 0 rgba(255, 180, 0, 0.75),
+                            -0.05em -0.05em 0 rgba(255, 255, 0, 0.75);
+            }
+            50% {
+                text-shadow: 0.025em 0.05em 0 rgba(255, 215, 0, 0.75),
+                            0.05em 0 0 rgba(255, 180, 0, 0.75),
+                            0 -0.05em 0 rgba(255, 255, 0, 0.75);
+            }
+            99% {
+                text-shadow: 0.025em 0.05em 0 rgba(255, 215, 0, 0.75),
+                            0.05em 0 0 rgba(255, 180, 0, 0.75),
+                            0 -0.05em 0 rgba(255, 255, 0, 0.75);
+            }
+            100% {
+                text-shadow: -0.025em 0 0 rgba(255, 215, 0, 0.75),
+                            -0.025em -0.025em 0 rgba(255, 180, 0, 0.75),
+                            -0.025em -0.05em 0 rgba(255, 255, 0, 0.75);
+            }
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            margin-top: 20px;
+            opacity: 0.9;
+        }
+
+        .about {
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: 0 8px 32px 0 rgba(255, 215, 0, 0.2);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .about:hover {
+            transform: translateY(-5px);
+        }
+
+        .about h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .about p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .skill-card {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(90deg, transparent 0%, rgba(255, 215, 0, 0.1) 50%, transparent 100%);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .skill-card:hover::before {
+            transform: translateX(100%);
+        }
+
+        .skill-card:hover {
+            transform: scale(1.05) rotate(2deg);
+            background: rgba(0, 0, 0, 0.9);
+            border-color: rgba(255, 215, 0, 0.8);
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.4);
+        }
+
+        .skill-image {
+            width: 100%;
+            height: 180px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            object-fit: cover;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .skill-card:hover .skill-image {
+            transform: scale(1.05);
+            border-color: rgba(255, 215, 0, 0.8);
+            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.3);
+        }
+
+        .skill-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .skill-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .projects {
+            margin: 40px 0;
+        }
+
+        .projects h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .project-item {
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 25px;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            cursor: pointer;
+        }
+
+        .project-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.3);
+            border-color: rgba(255, 215, 0, 0.6);
+        }
+
+        .project-item h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .contact {
+            text-align: center;
+            margin: 60px 0;
+            padding: 40px;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .contact h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(45deg, #ffd700 0%, #ffed4e 100%);
+            color: #1a1a1a;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.6);
+            background: linear-gradient(45deg, #ffed4e 0%, #ffd700 100%);
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .glitch {
+                font-size: 2.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .about h2, .projects h2, .contact h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 class="glitch">DIMA</h1>
+            <p class="subtitle">Web Developer & Photo Editor</p>
+        </header>
+
+        <section class="about">
+            <h2>About Me</h2>
+            <p>Hey there! I'm Dima, a 17-year-old creative mind passionate about building stunning websites and crafting visual stories through photo editing.</p>
+            <p>Currently in my second year at AWANS Technical College in Poland, I'm constantly learning new technologies and pushing the boundaries of web design. I believe that great digital experiences combine beautiful design with flawless functionality.</p>
+            <p>When I'm not coding or editing photos, you'll find me exploring the latest web trends, experimenting with new design techniques, or collaborating on exciting projects that challenge my skills.</p>
+        </section>
+
+        <section class="skills">
+            <div class="skill-card">
+                <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400&h=300&fit=crop" alt="Web Development" class="skill-image">
+                <div class="skill-icon">💻</div>
+                <h3>Web Development</h3>
+                <p>HTML, CSS, JavaScript - Building responsive and interactive websites from scratch</p>
+            </div>
+            <div class="skill-card">
+                <img src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=400&h=300&fit=crop" alt="Photo Editing" class="skill-image">
+                <div class="skill-icon">📸</div>
+                <h3>Photo Editing</h3>
+                <p>Professional retouching, color grading, and creative compositing</p>
+            </div>
+            <div class="skill-card">
+                <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=300&fit=crop" alt="UI/UX Design" class="skill-image">
+                <div class="skill-icon">🎨</div>
+                <h3>UI/UX Design</h3>
+                <p>Creating intuitive user interfaces with modern design principles</p>
+            </div>
+            <div class="skill-card">
+                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=300&fit=crop" alt="Quick Learner" class="skill-image">
+                <div class="skill-icon">⚡</div>
+                <h3>Quick Learner</h3>
+                <p>Always adapting to new technologies and industry trends</p>
+            </div>
+        </section>
+
+        <section class="projects">
+            <h2>Recent Projects</h2>
+            <div class="project-grid">
+                <div class="project-item">
+                    <h3>🌐 E-Commerce Platform</h3>
+                    <p>A fully responsive online store with modern UI and smooth animations. Built with focus on user experience and mobile-first approach.</p>
+                </div>
+                <div class="project-item">
+                    <h3>📷 Photography Portfolio</h3>
+                    <p>A stunning gallery website showcasing professional photography with custom image filters and lazy loading.</p>
+                </div>
+                <div class="project-item">
+                    <h3>🎭 Brand Identity Kit</h3>
+                    <p>Complete visual identity including logo design, color schemes, and photo editing guidelines for a local startup.</p>
+                </div>
+                <div class="project-item">
+                    <h3>🚀 Landing Page Series</h3>
+                    <p>Collection of high-converting landing pages with eye-catching designs and optimized performance.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact">
+            <h2>Let's Create Something Amazing!</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 30px;">Have a project in mind? I'm always excited to collaborate on new ideas!</p>
+            <a href="mailto:dima@example.com" class="contact-btn">📧 Email Me</a>
+            <a href="#" class="contact-btn">💼 View Portfolio</a>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 Dima. Crafted with passion and creativity.</p>
+            <p>AWANS Technical College | Warsaw, Poland</p>
+        </footer>
+    </div>
+</body>
+</html>
