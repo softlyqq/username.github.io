@@ -17,9 +17,30 @@
             background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #3d3d00 100%);
             color: #fff;
             overflow-x: hidden;
+            position: relative;
         }
 
         body::before {
+            content: '{ } </> [ ] ( ) ; : . , ~ @ # $ % ^ & * + = | \\ / _ - ` " ? ! < > { } [ ] ( ) ; : . , ~ @ # $ % ^ & * + = | \\ / _ - 0 1 { } </> [ ] ( ) ; : . , ~ @ # $ % ^ & * + = | \\ / _ - ` " ? ! < > { } [ ] ( ) ; : . , ~ @ # $ % ^ & * + = | \\ / _ - 0 1 { } </> [ ] ( ) ; : . , ~ @ # $ % ^ & * + = | \\ / _ - ` " ? ! < > { } [ ] ( ) ; : . , ~ @ # $ % ^ & * + = | \\ / _ - 0 1 { } </> [ ] ( ) ; : . , ~ @ # $ % ^ & * + = | \\ / _ - ` " ? ! < > function code class div html css js { } </> [ ] ( ) ; : . , ~ @ # $ % ^ & * + = | \\ / _ - ` " ? ! < > { } [ ] ( ) ; : . , ~ @ # $ % ^ & * + = | \\ / _ - 0 1 const let var if else while for return { } </> [ ] ( ) ; : . , ~ @ # $ % ^ & * + = | \\ / _ - ` " ? ! < > { } [ ] ( ) ; : . , ~ @ # $ % ^ & * + = | \\ / _ - 0 1';
+            position: fixed;
+            top: -50px;
+            left: -50px;
+            width: 110%;
+            height: 110%;
+            font-size: 16px;
+            font-family: 'Courier New', monospace;
+            color: rgba(0, 0, 0, 0.4);
+            line-height: 45px;
+            word-wrap: break-word;
+            overflow: hidden;
+            white-space: pre-wrap;
+            pointer-events: none;
+            z-index: 0;
+            letter-spacing: 8px;
+            transform: rotate(-3deg);
+        }
+
+        body::after {
             content: '';
             position: fixed;
             top: 0;
@@ -35,14 +56,11 @@
         }
 
         .container {
-            position: relative;
-            z-index: 1;
-        }
-
-        .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
+            position: relative;
+            z-index: 1;
         }
 
         header {
@@ -52,52 +70,24 @@
         }
 
         .glitch {
-            font-size: 4rem;
+            font-size: 3.5rem;
             font-weight: bold;
             text-transform: uppercase;
             position: relative;
-            text-shadow: 0.05em 0 0 rgba(255, 215, 0, 0.75),
-                        -0.025em -0.05em 0 rgba(255, 180, 0, 0.75),
-                        0.025em 0.05em 0 rgba(255, 255, 0, 0.75);
-            animation: glitch 500ms infinite;
+            color: #ffd700;
+            text-shadow: 
+                3px 3px 0 #000,
+                -2px -2px 0 rgba(255, 215, 0, 0.3),
+                0 0 20px rgba(255, 215, 0, 0.5);
+            letter-spacing: 5px;
+            transition: all 0.3s ease;
         }
 
-        @keyframes glitch {
-            0% {
-                text-shadow: 0.05em 0 0 rgba(255, 215, 0, 0.75),
-                            -0.025em -0.05em 0 rgba(255, 180, 0, 0.75),
-                            0.025em 0.05em 0 rgba(255, 255, 0, 0.75);
-            }
-            14% {
-                text-shadow: 0.05em 0 0 rgba(255, 215, 0, 0.75),
-                            -0.025em -0.05em 0 rgba(255, 180, 0, 0.75),
-                            0.025em 0.05em 0 rgba(255, 255, 0, 0.75);
-            }
-            15% {
-                text-shadow: -0.05em -0.025em 0 rgba(255, 215, 0, 0.75),
-                            0.025em 0.025em 0 rgba(255, 180, 0, 0.75),
-                            -0.05em -0.05em 0 rgba(255, 255, 0, 0.75);
-            }
-            49% {
-                text-shadow: -0.05em -0.025em 0 rgba(255, 215, 0, 0.75),
-                            0.025em 0.025em 0 rgba(255, 180, 0, 0.75),
-                            -0.05em -0.05em 0 rgba(255, 255, 0, 0.75);
-            }
-            50% {
-                text-shadow: 0.025em 0.05em 0 rgba(255, 215, 0, 0.75),
-                            0.05em 0 0 rgba(255, 180, 0, 0.75),
-                            0 -0.05em 0 rgba(255, 255, 0, 0.75);
-            }
-            99% {
-                text-shadow: 0.025em 0.05em 0 rgba(255, 215, 0, 0.75),
-                            0.05em 0 0 rgba(255, 180, 0, 0.75),
-                            0 -0.05em 0 rgba(255, 255, 0, 0.75);
-            }
-            100% {
-                text-shadow: -0.025em 0 0 rgba(255, 215, 0, 0.75),
-                            -0.025em -0.025em 0 rgba(255, 180, 0, 0.75),
-                            -0.025em -0.05em 0 rgba(255, 255, 0, 0.75);
-            }
+        .glitch:hover {
+            text-shadow: 
+                3px 3px 0 #000,
+                -2px -2px 0 rgba(255, 215, 0, 0.5),
+                0 0 30px rgba(255, 215, 0, 0.8);
         }
 
         .subtitle {
@@ -212,6 +202,9 @@
             font-size: 2.5rem;
             text-align: center;
             margin-bottom: 30px;
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .project-grid {
@@ -254,6 +247,9 @@
         .contact h2 {
             font-size: 2.5rem;
             margin-bottom: 20px;
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .contact-btn {
@@ -276,25 +272,6 @@
             background: linear-gradient(45deg, #ffed4e 0%, #ffd700 100%);
         }
 
-         .insta-btn {
-            display: inline-block;
-            padding: 15px 40px;
-            background: linear-gradient(45deg, #ffd700 0%, #ffed4e 100%);
-            color: #1a1a1a;
-            text-decoration: none;
-            border-radius: 50px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin: 10px;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
-        }
-        .insta-btn :hover {
-                 transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.6);
-            background: linear-gradient(45deg, #ffed4e 0%, #ffd700 100%);
-        }
-
         footer {
             text-align: center;
             padding: 30px;
@@ -303,7 +280,7 @@
 
         @media (max-width: 768px) {
             .glitch {
-                font-size: 2.5rem;
+                font-size: 2rem;
             }
             
             .subtitle {
@@ -314,20 +291,27 @@
                 font-size: 2rem;
             }
         }
+
+        @media (max-width: 480px) {
+            .glitch {
+                font-size: 1.5rem;
+                letter-spacing: 1px;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1 class="glitch">DIMA</h1>
+            <h1 class="glitch">DMYTRO SHYROKYI</h1>
             <p class="subtitle">Web Developer & Photo Editor</p>
         </header>
 
         <section class="about">
             <h2>About Me</h2>
-            <p>Hey there! I'm Dima, a 17-year-old creative mind passionate about building stunning websites and crafting visual stories through photo editing.</p>
-            <p>Currently in my second year at AWANS Technical College in Poland, I'm constantly learning new technologies and pushing the boundaries of web design. I believe that great digital experiences combine beautiful design with flawless functionality.</p>
-            <p>When I'm not coding or editing photos, you'll find me exploring the latest web trends, experimenting with new design techniques, or collaborating on exciting projects that challenge my skills.</p>
+            <p>Hi! I'm Dmytro Shyrokyi, a 17-year-old passionate web developer and photo editor from Poland. I transform ideas into stunning digital experiences.</p>
+            <p>Currently studying at AWANS Technical College in Warsaw (2nd year), I specialize in creating modern, responsive websites and bringing images to life through professional editing. I love combining clean code with beautiful design.</p>
+            <p>My goal is to build digital products that not only look amazing but also provide seamless user experiences. Every project is an opportunity to learn something new and push creative boundaries.</p>
         </section>
 
         <section class="skills">
@@ -376,6 +360,14 @@
                     <h3>🚀 Landing Page Series</h3>
                     <p>Collection of high-converting landing pages with eye-catching designs and optimized performance.</p>
                 </div>
+                <div class="project-item">
+                    <h3>🎮 Interactive Web Game</h3>
+                    <p>Browser-based puzzle game with smooth animations, responsive controls, and engaging gameplay mechanics.</p>
+                </div>
+                <div class="project-item">
+                    <h3>📱 Mobile App UI Design</h3>
+                    <p>Complete mobile application interface design with user flow diagrams, wireframes, and high-fidelity mockups.</p>
+                </div>
             </div>
         </section>
 
@@ -383,12 +375,12 @@
             <h2>Let's Create Something Amazing!</h2>
             <p style="font-size: 1.2rem; margin-bottom: 30px;">Have a project in mind? I'm always excited to collaborate on new ideas!</p>
             <a href="mailto:dima@example.com" class="contact-btn">📧 Email Me</a>
+            <a href="https://instagram.com/yourusername" target="_blank" class="contact-btn">📸 Instagram</a>
             <a href="#" class="contact-btn">💼 View Portfolio</a>
-            <a href="https://www.instagram.com/softlyyqq?igsh=MWUydHhxdTNoNWE0Zg%3D%3D&utm_source=qr" class="insta-btn">My Instagram</a>
         </section>
 
         <footer>
-            <p>&copy; 2026 Dima. Crafted with passion and creativity.</p>
+            <p>&copy; 2026 Dmytro Shyrokyi. Crafted with passion and creativity.</p>
             <p>AWANS Technical College | Warsaw, Poland</p>
         </footer>
     </div>
